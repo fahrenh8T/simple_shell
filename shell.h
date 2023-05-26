@@ -11,6 +11,8 @@
 #include <ctype.h>
 #include <string.h>
 
+extern char **environ;
+
 int exit_chckr(char *cmd, char *inp, char *arg, int status);
 char **parse(char *strng, char *inp, int cnt, char *separator, int flag);
 void c_handler(int sig);
@@ -24,5 +26,9 @@ void my_puts(char *s);
 int _putchar(char c);
 unsigned int _delimeter(char k, char *delm);
 char *my_strtok(char *s, char *delm);
+void num_print(int num);
+int char_cnt(char *strng, char ch);
+int word_cnt(char *text);
+int _space(int ch);
 
 #endif /*SHELL_H*/
