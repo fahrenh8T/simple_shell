@@ -22,7 +22,7 @@ int exit_chckr(char *cmd, char *inp, char *store, int status)
 	{
 		free(store);
 		free(inp);
-		exit(127);
+		exit(69);
 	}
 
 	if (i == 5)
