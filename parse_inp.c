@@ -78,9 +78,9 @@ char **parse(char *strng, char *inp, int cnt, char *separator, int flag)
 		cnt++;
 		if  (i == 0)
 		{
-			separator = my_strtok(inp, "\t");
+			separator = my_strtok(inp, "\t ");
 		}
-		separator = my_strtok(NULL, "\t");
+		separator = my_strtok(NULL, "\t ");
 		i++;
 	}
 	return (rslt);
