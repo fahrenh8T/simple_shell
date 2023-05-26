@@ -9,7 +9,7 @@
  * Return: 0 if user input does not match the exit command
  * or exit wit status or 69 if too many arguments
 */
-int exit_chckr(char *cmd, char *inp, char store, int status)
+int exit_chckr(char *cmd, char *inp, char *store, int status)
 {
 	int i = 0, k = 0;
 	char *exit_cmd = "exit";
@@ -22,7 +22,7 @@ int exit_chckr(char *cmd, char *inp, char store, int status)
 	{
 		free(store);
 		free(inp);
-		exit(69);
+		exit(127);
 	}
 
 	if (i == 5)
@@ -94,12 +94,12 @@ char **parse(char *strng, char *inp, int cnt, char *separator, int flag)
 */
 void err_print(char *flname, char *tkn, int num)
 {
-	_puts(flname);
-	_puts(": ");
+	my_puts(flname);
+	my_puts(": ");
 	num_print(num);
-	_puts(": ");
-	_puts(tkn);
-	_puts(": not found\n");
+	my_puts(": ");
+	my_puts(tkn);
+	my_puts(": not found\n");
 }
 
 /**
@@ -116,7 +116,7 @@ char **parse_inp(char *inp, char *flname, int lcnt, int status)
 	int cnt = 0, lngth = 0, indx = 0, execflg = 0;
 	char *tkn, *store, *cmd = "env", *cmd_strng, **grid;
 
-	cnt = wrds(inp);
+	cnt = wrd_cnt(inp);
 	while (inp[lngth])
 		lngth++;
 	store = malloc(sizeof(char) * lngth + 2);
@@ -130,7 +130,7 @@ char **parse_inp(char *inp, char *flname, int lcnt, int status)
 		indx++;
 	if (indx == 4)
 	{
-		env(store, inp);
+		env_inp(store, inp);
 		return (NULL);
 	}
 	if (access(tkn, X_OK) == -1)

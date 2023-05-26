@@ -13,7 +13,7 @@
 
 extern char **environ;
 
-int exit_chckr(char *cmd, char *inp, char *arg, int status);
+int exit_chckr(char *cmd, char *inp, char *store, int status);
 char **parse(char *strng, char *inp, int cnt, char *separator, int flag);
 void c_handler(int sig);
 char *my_input(void);
@@ -28,7 +28,9 @@ unsigned int _delimeter(char k, char *delm);
 char *my_strtok(char *s, char *delm);
 void num_print(int num);
 int char_cnt(char *strng, char ch);
-int word_cnt(char *text);
+int wrd_cnt(char *text);
 int _space(int ch);
+char **parse_inp(char *inp, char *flname, int lcnt, int status);
+int env_inp(char *strng, char *inp);
 
 #endif /*SHELL_H*/

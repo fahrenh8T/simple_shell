@@ -59,7 +59,7 @@ char *my_check(char *inp)
 		{
 			i = 0;
 			pth = environ_var + 5;
-			cnt = count_char(pth, ':');
+			cnt = char_cnt(pth, ':');
 			val = my_string(pth, inp, cnt + 1);
 			break;
 		}

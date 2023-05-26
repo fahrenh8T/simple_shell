@@ -49,7 +49,7 @@ char *my_strtok(char *s, char *delm)
 			str = s;
 			return (r);
 		}
-		if (delimt(*s, delm))
+		if (_delimeter(*s, delm))
 		{
 			*s = '\0';
 			str = s + 1;
