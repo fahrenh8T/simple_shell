@@ -16,41 +16,17 @@ void c_handler(int sig)
  */
 char *my_input(void)
 {
-	static char buff[MAX_LENGTH];
-	static int buff_index;
-	static int n;
+	size_t n = 0;
+	ssize_t nread;
 	char *line = NULL;
-	int index = 0;
 
-	while (1)
+	nread = getline(&line, &n, stdin);
+	if (nread == -1)
 	{
-		if (buff_index == n)
-		{
-			n = read(STDIN_FILENO, buff, MAX_LENGTH);
-			buff_index = 0;
-			if (n == 0)
-				break;
-		}
-		while (buff_index < n && buff[buff_index] != '\n')
-		{
-			if (buff[buff_index] == '\r')
-			{
-				buff_index++;
-				continue;
-			}
-			if (!line)
-			{
-				line = malloc(MAX_LENGTH * sizeof(char));
-			}
-			line[index++] = buff[buff_index++];
-		}
-		if (buff_index < n && buff[buff_index] == '\n')
-		{
-			line[index] = '\0';
-			buff_index++;
-			break;
-		}
+		free(line);
+		return (NULL);
 	}
+	line[nread - 1] = '\0';
 	return (line);
 }
 
